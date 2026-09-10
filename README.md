@@ -1,12 +1,11 @@
 # CourtVision
-
 ### Automated Basketball Highlight Editor
+
+## ▶︎ [**See it live — cadenruan.github.io/CourtVision-showcase**](https://cadenruan.github.io/CourtVision-showcase/)
 
 **It watches a half-hour basketball highlight video and edits it down to a half-minute
 vertical clip — picking the plays, following the players, and cutting it in time with the
 music.**
-
-### ▶︎ [**cadenruan.github.io/CourtVision-showcase**](https://cadenruan.github.io/CourtVision-showcase/)
 
 ---
 
@@ -42,19 +41,42 @@ Four models do the looking, all running on the laptop rather than a server. One 
 people and the ball, one finds rims, one watches for the moment the broadcast cuts to a
 different camera, and one reads the number on a jersey.
 
-## Viewing it locally
-
-```bash
-python serve.py
-```
-
-Then open <http://localhost:8731>. Use that script rather than `python -m http.server`,
-which does not answer byte-range requests — without them Safari will not start a video at
-all, and Chrome cannot seek in one.
-
 ---
 
-Technical detail: [ARCHITECTURE.md](ARCHITECTURE.md) · [METHOD.md](METHOD.md)
+## Editing the site
+
+Everything on the site is in **one file — [`index.html`](index.html)**. There is no build
+step and nothing to install: change the words, commit, and the live site rebuilds itself in
+about a minute.
+
+**The quickest way — in the browser.** Open
+[`index.html` on GitHub](https://github.com/cadenruan/CourtVision-showcase/edit/main/index.html),
+edit the text, and press **Commit changes** at the top right. That is the whole loop.
+
+**On your Mac,** if you want to see it before it goes live:
+
+```bash
+cd ~/CourtVision-showcase
+# ...edit index.html in any editor...
+python serve.py                 # preview at http://localhost:8731
+git add -A && git commit -m "reworded the intro" && git push
+```
+
+### Where each bit of text lives in `index.html`
+
+| what you want to change | where to look |
+|---|---|
+| the title and the line under it | the `<header>` block, near the top |
+| the two tab names | the `<nav>` block, just below it |
+| the intro paragraphs above the videos | `<section id="s-reels">` |
+| the *What it sees* and *five stages* text | `<section id="s-how">` |
+| the player names and captions under each video | the `REELS` list at the very bottom |
+| the words inside the diagram boxes | the `<text>` lines inside `<svg>` |
+| colours, spacing, fonts | the `<style>` block at the top |
+
+⚠️ Two things to leave alone unless you mean it: the `id="..."` values (the tab switching
+finds sections by those names) and `.nojekyll` (an empty file that tells GitHub to serve
+the folder as-is).
 
 *The reels are highlight footage cut to commercial music, shown as examples of what the
 software produces.*

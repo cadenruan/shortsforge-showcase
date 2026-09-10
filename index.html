@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CourtVision — Automated Basketball Highlight Editor</title>
-<meta name="description" content="An automated basketball highlight editor. It watches a half-hour highlight video and edits it down to a half-minute vertical clip — picking the plays, following the players, and cutting it in time with the music.">
+<meta name="description" content="An automated basketball highlight editor. It watches a half-hour highlight video and edits it down to a half-minute edit-styled vertical clip, picking the plays, following the players, and cutting it on beat with the music.">
 <style>
 :root{
   --bg:#fbfbfa; --panel:#ffffff; --ink:#1a1a19; --dim:#5f6360; --line:#e3e2de;
@@ -73,7 +73,7 @@ footer{border-top:1px solid var(--line);padding:24px 0 56px;color:var(--dim);fon
   <h1>CourtVision</h1>
   <p class="kicker">Automated Basketball Highlight Editor</p>
   <p>It watches a half-hour basketball highlight video and edits it down to a half-minute
-  vertical clip — picking the plays, following the players, and cutting it in time with the
+  edit-styled clip, picking the plays, following the players, and cutting it on beat with the
   music.</p>
 </header>
 
@@ -85,16 +85,16 @@ footer{border-top:1px solid var(--line);padding:24px 0 56px;color:var(--dim);fon
 <main class="wrap">
 
 <section id="s-reels" role="tabpanel" aria-labelledby="t-reels">
-  <p>Editing a highlight reel by hand takes hours. You sit through the whole video, pick out
-  the good plays, trim each one so the basket lands where you want it, re-crop every shot for
-  a phone screen, then line the whole thing up with a song.</p>
+  <p>Editing a highlight reel by hand takes hours, picking out the good plays
+  trimming each one so the basket lands where you want it, re-cropping every shot
+  for a phone screen, then lining the whole thing up with a song.</p>
 
-  <p>CourtVision does all of it on its own. Give it a long highlight compilation, a player
-  and a song, and it hands back a finished vertical clip.</p>
+  <p>CourtVision does all of it on its own. It takes in a long highlight compilation, a player
+  and a song, and it hands back a finished short edit-styled clip.</p>
 
-  <p>These six were made that way — six players, six songs, footage spanning three decades.
-  Nobody touched them. Every play, cut, crop and bit of timing was chosen by the software.
-  Sound on.</p>
+  <p>These six edits were made through this project, using six players,
+  six songs, footage spanning three decades. Every play, cut, crop 
+  and bit of timing was chosen by the software. Sound on.</p>
 
   <div class="reels" id="reelgrid"></div>
 </section>
@@ -102,7 +102,7 @@ footer{border-top:1px solid var(--line);padding:24px 0 56px;color:var(--dim);fon
 <section id="s-how" role="tabpanel" aria-labelledby="t-how" hidden>
   <h2>What it sees</h2>
 
-  <p>One of the reels, with the software's own view drawn on top.</p>
+  <p>One reel with the software's view drawn on top.</p>
 
   <div class="wide">
     <video controls playsinline preload="metadata" poster="assets/tracking-poster.jpg">
@@ -119,18 +119,14 @@ footer{border-top:1px solid var(--line);padding:24px 0 56px;color:var(--dim);fon
     <li><i class="sw" style="background:#00dcff"></i> the rim</li>
   </ul>
 
-  <p>Four models do the looking, and all of them run on the laptop rather than a server. One
-  finds the people and the ball. One finds rims. One watches for the moment the broadcast
-  cuts to a different camera, so a clip never straddles two shots. One reads the number on a
-  jersey, which is how a reel about one player stays about that player.</p>
+  <p>Four models do the looking, and all of them ran locally on my laptop. One
+  finds the people and the ball. One finds the rim One watches for the moment the broadcast
+  cuts to a different camera, so a clip never exists between two shots. One reads the number
+  on a jersey, which is how a reel about one player stays on that player.</p>
 
   <p>The green box is the part that survives into the finished reel. It tracks the player
   down the court, which is how a wide television shot becomes a vertical video without
-  losing him off the edge.</p>
-
-  <p>Watch the ball as it reaches the basket and you'll see it vanish — hidden in the
-  player's hands, blurred by the motion, right at the moment that decides whether the shot
-  counted. So the software is built never to read "I can't see it" as "it isn't there."</p>
+  losing him.</p>
 
   <h2>The five stages</h2>
 
@@ -189,15 +185,10 @@ footer{border-top:1px solid var(--line);padding:24px 0 56px;color:var(--dim);fon
   <path class="fl" marker-end="url(#a2)" d="M500 321 H 450"/>
 </svg></div>
 
-  <p>The song does more work than you might expect. CourtVision measures the tempo and where
-  the beats fall, makes every clip a whole number of beats long so cuts land on the beat
-  rather than near it, then works backwards from the drop — picking which play belongs there
-  and setting its start time so the basket arrives exactly on it.</p>
+  <p>~40,000 lines of Python, running offline on one machine. Unless specified, the same
+  video and the same song always produce the same edit, frame for frame.</p>
 
-  <p>About 40,000 lines of Python, running offline on one machine. Nothing is guessed: the
-  same video and the same song always produce the same edit, frame for frame.</p>
-
-  <p style="color:var(--dim);font-size:14.5px">If you want the technical detail, it is in
+  <p style="color:var(--dim);font-size:14.5px">More technical detail is in
   <a href="ARCHITECTURE.md">ARCHITECTURE.md</a> and <a href="METHOD.md">METHOD.md</a>.</p>
 </section>
 

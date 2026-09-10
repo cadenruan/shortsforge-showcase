@@ -8,174 +8,102 @@
 <style>
 :root{
   --bg:#fbfbfa; --panel:#ffffff; --ink:#1a1a19; --dim:#5f6360; --line:#e3e2de;
-  --accent:#c2410c; --good:#15803d; --bad:#b91c1c; --code:#f4f3f0;
+  --accent:#c2410c; --good:#15803d;
   --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#111312; --panel:#181a19; --ink:#e9e8e4; --dim:#9aa09b; --line:#2a2d2b;
-  --accent:#fb923c; --good:#4ade80; --bad:#f87171; --code:#1e211f;
+  --accent:#fb923c; --good:#4ade80;
 }}
 :root[data-theme="dark"]{
   --bg:#111312; --panel:#181a19; --ink:#e9e8e4; --dim:#9aa09b; --line:#2a2d2b;
-  --accent:#fb923c; --good:#4ade80; --bad:#f87171; --code:#1e211f;
+  --accent:#fb923c; --good:#4ade80;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
-     font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+     font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 22px}
 a{color:var(--accent)}
-code,.mono{font-family:var(--mono);font-size:.9em}
-code{background:var(--code);padding:.12em .38em;border-radius:4px}
 
-header{padding:56px 0 26px}
-h1{font-size:clamp(30px,5.2vw,46px);line-height:1.08;margin:0 0 14px;letter-spacing:-.022em}
-.sub{font-size:clamp(16px,2.3vw,19px);color:var(--dim);max-width:62ch;margin:0}
-.tagrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.tag{font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:var(--dim);
-     border:1px solid var(--line);border-radius:999px;padding:4px 11px;background:var(--panel)}
+header{padding:60px 0 22px}
+h1{font-size:clamp(31px,5.4vw,44px);line-height:1.08;margin:0 0 14px;letter-spacing:-.022em}
+header p{font-size:clamp(16.5px,2.2vw,18.5px);color:var(--dim);max-width:60ch;margin:0}
 
-nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);
-    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin-top:26px}
+nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin-top:24px}
 .tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
 .tabs button{appearance:none;background:none;border:0;border-bottom:2px solid transparent;
-  color:var(--dim);font:inherit;font-size:15px;padding:13px 15px;cursor:pointer;white-space:nowrap}
+  color:var(--dim);font:inherit;font-size:15.5px;padding:13px 14px;cursor:pointer;white-space:nowrap}
 .tabs button:hover{color:var(--ink)}
 .tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
 
 main{padding:34px 0 90px}
 section[hidden]{display:none}
-h2{font-size:26px;letter-spacing:-.015em;margin:44px 0 12px}
+h2{font-size:21px;letter-spacing:-.012em;margin:38px 0 10px}
 h2:first-child{margin-top:0}
-h3{font-size:18px;margin:30px 0 8px}
-p{margin:0 0 14px;max-width:74ch}
-.lede{font-size:18px;color:var(--dim);max-width:70ch}
-ul,ol{max-width:74ch;padding-left:22px}
-li{margin:6px 0}
+p{margin:0 0 16px;max-width:64ch}
+ul{max-width:64ch;padding-left:20px;margin:0 0 16px}
+li{margin:5px 0}
 
-.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:18px 0}
-.grid{display:grid;gap:16px}
-@media(min-width:760px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}}
-.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
-.stat b{display:block;font-size:27px;letter-spacing:-.02em;line-height:1.15}
-.stat span{color:var(--dim);font-size:13.5px}
+.reels{display:grid;gap:20px}
+@media(min-width:620px){.reels{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:920px){.reels{grid-template-columns:repeat(3,1fr)}}
+.reel video{width:100%;display:block;background:#000;aspect-ratio:9/16;object-fit:cover;
+  border-radius:10px;border:1px solid var(--line)}
+.reel h4{margin:9px 0 1px;font-size:15px;font-weight:600}
+.reel p{margin:0;color:var(--dim);font-size:13.5px}
 
-table{border-collapse:collapse;width:100%;font-size:14.5px;margin:14px 0}
-th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
-th{color:var(--dim);font-weight:600;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase}
-td.num,th.num{text-align:right;font-family:var(--mono)}
-.pass{color:var(--good);font-weight:600}
-.fail{color:var(--bad);font-weight:600}
-.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.wide video{width:100%;border-radius:10px;border:1px solid var(--line);display:block;background:#000}
+.key{display:flex;flex-wrap:wrap;gap:6px 18px;margin:14px 0 22px;padding:0;list-style:none;max-width:64ch}
+.key li{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--dim);margin:0}
+.sw{width:15px;height:10px;border-radius:3px;display:inline-block;flex:0 0 auto}
 
-pre{background:var(--code);border:1px solid var(--line);border-radius:10px;padding:14px 16px;
-    overflow-x:auto;font-family:var(--mono);font-size:13px;line-height:1.55}
-figure{margin:22px 0}
-figure img{width:100%;border-radius:10px;border:1px solid var(--line);display:block}
-figcaption{color:var(--dim);font-size:13.5px;margin-top:9px;max-width:76ch}
-
-.reels{display:grid;gap:22px}
-@media(min-width:700px){.reels{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1000px){.reels{grid-template-columns:repeat(3,1fr)}}
-.reel{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.reel video{width:100%;display:block;background:#000;aspect-ratio:9/16;object-fit:cover}
-.reel .meta{padding:12px 14px}
-.reel .meta h4{margin:0 0 3px;font-size:15.5px}
-.reel .meta p{margin:0;color:var(--dim);font-size:13px}
-.badge{display:inline-block;font-family:var(--mono);font-size:11.5px;padding:2px 8px;border-radius:999px;
-       border:1px solid var(--line);color:var(--good);margin-left:6px}
-.badge.f{color:var(--bad)}
-
-.wide video{width:100%;border-radius:12px;border:1px solid var(--line);display:block;background:#000}
-.key{display:flex;flex-wrap:wrap;gap:14px;margin:14px 0 0;padding:0;list-style:none}
-.key li{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--dim);margin:0}
-.sw{width:16px;height:11px;border-radius:3px;display:inline-block}
-
-.note{border-left:3px solid var(--accent);padding:2px 0 2px 15px;color:var(--dim);margin:16px 0;max-width:74ch}
-footer{border-top:1px solid var(--line);padding:26px 0 60px;color:var(--dim);font-size:13.5px}
+.figure{margin:6px 0 26px}
+.figure svg{width:100%;height:auto;display:block}
+footer{border-top:1px solid var(--line);padding:24px 0 56px;color:var(--dim);font-size:13.5px}
 </style>
 </head>
 <body>
 
 <header class="wrap">
   <h1>ShortsForge</h1>
-  <p class="sub">Software that watches a half-hour basketball highlight video and edits it
-  down to a half-minute clip for your phone — choosing the plays, framing the players,
-  and cutting it in time with the music. On its own, start to finish.</p>
-  <div class="tagrow">
-    <span class="tag">half an hour in · half a minute out</span>
-    <span class="tag">six finished reels</span>
-    <span class="tag">no human editing at any step</span>
-    <span class="tag">runs offline on one laptop</span>
-  </div>
+  <p>Software that watches a half-hour basketball highlight video and edits it down to a
+  half-minute vertical clip — picking the plays, following the players, and cutting it in
+  time with the music.</p>
 </header>
 
 <nav><div class="wrap"><div class="tabs" role="tablist">
   <button role="tab" id="t-what"     aria-selected="true"  aria-controls="s-what">What it is</button>
   <button role="tab" id="t-reels"    aria-selected="false" aria-controls="s-reels">The reels</button>
-  <button role="tab" id="t-tracking" aria-selected="false" aria-controls="s-tracking">What it sees</button>
+  <button role="tab" id="t-sees"     aria-selected="false" aria-controls="s-sees">What it sees</button>
   <button role="tab" id="t-how"      aria-selected="false" aria-controls="s-how">How it works</button>
-  <button role="tab" id="t-trust"    aria-selected="false" aria-controls="s-trust">Why it's reliable</button>
 </div></div></nav>
 
 <main class="wrap">
 
-<!-- ─────────────────────────────── WHAT IT IS ───────────────────────────── -->
 <section id="s-what" role="tabpanel" aria-labelledby="t-what">
-  <p class="lede">Making a highlight edit by hand is slow work. You watch the whole video,
-  pick the good plays, trim each one so the basket lands where you want it, re-frame every
-  shot for a vertical phone screen, and line the whole thing up with a song. An editor
-  might spend an afternoon on thirty seconds of video.</p>
+  <p>Editing a highlight reel by hand takes hours. You sit through the whole video, pick out
+  the good plays, trim each one so the basket lands where you want it, re-crop every shot for
+  a phone screen, then line the whole thing up with a song.</p>
 
-  <p>This does that automatically. You give it a long highlight compilation, the name of a
-  player and a song. It gives you back a finished vertical Short.</p>
+  <p>We built software that does all of it on its own. Give it a long highlight
+  compilation, a player and a song, and it hands back a finished vertical clip.</p>
 
-  <div class="grid g3" style="margin:26px 0">
-    <div class="stat"><b>6</b><span>finished reels, each edited entirely by the software</span></div>
-    <div class="stat"><b>0</b><span>manual cuts, crops or timing tweaks in any of them</span></div>
-    <div class="stat"><b>1</b><span>laptop — no cloud service, no internet, nothing sent anywhere</span></div>
-  </div>
+  <p>The six reels here were made that way. Nobody touched them — every play, every cut,
+  every crop and every bit of timing was chosen by the software.</p>
 
-  <h2>What makes it hard</h2>
-  <p>Nothing in the source video tells the software what is happening. There is no
-  scoreboard data and no commentary track it can read — just pixels and a soundtrack that
-  the original uploader has already mixed music over, so even the crowd noise is unreliable.</p>
-  <p>The footage is a patchwork: thirty years of broadcasts, different cameras, different
-  picture shapes, slow-motion replays, and camera cuts that land in the middle of a play.
-  From that alone it has to work out where a play begins, who has the ball, whether the
-  shot went in, and which two-and-a-half seconds are the good part.</p>
-
-  <div class="card">
-    <h3 style="margin-top:0">The hardest single problem: you cannot see the ball</h3>
-    <p style="margin:0">During a dunk the ball is in the player's hands, hidden behind his
-    body and blurred by motion — for exactly the moment that decides whether it counts. The
-    ball is only visible in roughly two frames out of every three, and near the rim it can
-    vanish completely. You can watch that happen for yourself in
-    <a href="#" data-goto="tracking">What it sees</a>.</p>
-  </div>
-
-  <h2>What comes out</h2>
-  <p>Six finished reels, one per player. Every clip in them was chosen, trimmed, cropped
-  and timed by the software — including which play opens the reel, how long each shot
-  holds, and which basket lands on the drop of the song.</p>
   <p><a href="#" data-goto="reels">Watch them &rarr;</a></p>
 </section>
 
-<!-- ───────────────────────────────── REELS ─────────────────────────────── -->
 <section id="s-reels" role="tabpanel" aria-labelledby="t-reels" hidden>
-  <p class="lede">Six reels, six players, six different songs. Nobody edited these. The
-  software picked every play, decided the order, set the length of each shot, framed the
-  camera on the right player, and matched the whole thing to the beat.</p>
+  <p>Six players, six songs, footage spanning three decades. Sound on.</p>
   <div class="reels" id="reelgrid"></div>
-  <p style="color:var(--dim);font-size:14px;margin-top:20px">Sound on. Compressed for the
-  web — the originals are full phone resolution.</p>
 </section>
 
-<!-- ─────────────────────────────── TRACKING ────────────────────────────── -->
-<section id="s-tracking" role="tabpanel" aria-labelledby="t-tracking" hidden>
-  <p class="lede">This is one of those reels with the software's own view drawn on top —
-  everything it is looking at, as it looks at it.</p>
+<section id="s-sees" role="tabpanel" aria-labelledby="t-sees" hidden>
+  <p>One of the reels, with the software's own view drawn on top.</p>
 
   <div class="wide">
     <video controls playsinline preload="metadata" poster="assets/tracking-poster.jpg">
@@ -184,44 +112,32 @@ footer{border-top:1px solid var(--line);padding:26px 0 60px;color:var(--dim);fon
   </div>
 
   <ul class="key">
-    <li><i class="sw" style="background:#969696"></i> everyone it can see</li>
+    <li><i class="sw" style="background:#969696"></i> everyone on court</li>
     <li><i class="sw" style="background:#ffdc00"></i> the player this clip is about</li>
     <li><i class="sw" style="background:#ff0000"></i> …when he slips out of frame</li>
-    <li><i class="sw" style="background:#00eb00"></i> the phone-shaped crop it will keep</li>
+    <li><i class="sw" style="background:#00eb00"></i> the phone-shaped crop it keeps</li>
     <li><i class="sw" style="background:#ff8c00"></i> the ball</li>
     <li><i class="sw" style="background:#00dcff"></i> the rim</li>
   </ul>
 
-  <h2>Three things worth watching for</h2>
+  <p>Four models do the looking, and all of them run on the laptop rather than a server.
+  One finds the people and the ball. One finds rims. One watches for the moment the
+  broadcast cuts to a different camera, so a clip never straddles two shots. One reads the
+  number on a jersey, which is how a reel about one player stays about that player.</p>
 
-  <h3>The green box is the actual video you get</h3>
-  <p>A broadcast is filmed wide, for a television. A phone screen is tall and narrow. The
-  green rectangle is the slice the software keeps — and it moves, following the player down
-  the court, so a wide shot becomes a vertical one without losing him off the edge. What
-  ends up in that box is exactly what you saw in
-  <a href="#" data-goto="reels">the reels</a>.</p>
+  <p>The green box is the part that survives into the finished reel. It tracks the player
+  down the court, which is how a wide television shot becomes a vertical video without
+  losing him off the edge.</p>
 
-  <h3>The orange dot disappears — and that is the whole problem</h3>
-  <p>Watch the ball as it reaches the basket. It vanishes. It is hidden in the player's
-  hands, or blurred past recognition, right at the moment that decides whether the shot
-  counted.</p>
-  <p>So the software is built never to treat "I can't see it" as "it isn't there." Seeing
-  the ball can help it make a decision; <em>not</em> seeing the ball is never allowed to
-  make one. That single rule is why the reels do not cut away halfway through a dunk.</p>
-
-  <h3>The blue circle is a ruler that travels with the picture</h3>
-  <p>Cameras zoom constantly, so "near the top of the screen" means something different in
-  every shot. Instead, distances are measured against something in the picture itself — the
-  circle is sized from the rim it is drawn around. A rule written that way keeps working
-  whether the camera is courtside in 2011 or up in the rafters last season.</p>
+  <p>Watch the ball as it reaches the basket and you'll see it vanish — hidden in the
+  player's hands, blurred by the motion, right at the moment that decides whether the shot
+  counted. So the software is built never to read "I can't see it" as "it isn't there."</p>
 </section>
 
-<!-- ─────────────────────────────── HOW IT WORKS ────────────────────────── -->
 <section id="s-how" role="tabpanel" aria-labelledby="t-how" hidden>
-  <p class="lede">Five stages, in order. Nothing in here guesses: give it the same video
-  twice and you get exactly the same edit, frame for frame.</p>
+  <p>Five stages, in order.</p>
 
-  <div class="card" id="diagram"><svg viewBox="0 0 960 470" role="img" aria-label="Five stages: watch the whole video, find the plays, pick the best ones, cut to the music, reframe for a phone and check the result." style="width:100%;height:auto;display:block">
+  <div class="figure" id="diagram"><svg viewBox="0 0 800 470" role="img" aria-label="Five stages: watch the whole video, find the plays, pick the best ones, cut to the music, reframe for a phone." style="width:100%;height:auto;display:block">
   <defs>
     <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
       <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
@@ -233,12 +149,10 @@ footer{border-top:1px solid var(--line);padding:26px 0 60px;color:var(--dim);fon
       .sub2{fill:var(--dim);font:13px var(--sans)}
       .io{fill:var(--dim);font:600 12.5px var(--sans)}
       .fl{stroke:var(--dim);stroke-width:1.6;fill:none;color:var(--dim);opacity:.8}
-      .ok{fill:var(--good);font:600 15px var(--sans)}
     </style>
   </defs>
 
   <text class="io" x="24" y="30">A LONG HIGHLIGHT VIDEO</text>
-  
 
   <rect class="bx" x="24" y="44" width="420" height="62"/>
   <text class="num" x="44" y="72">1</text>
@@ -265,116 +179,29 @@ footer{border-top:1px solid var(--line);padding:26px 0 60px;color:var(--dim);fon
   <text class="ttl" x="70" y="400">Reframe for a phone</text>
   <text class="sub2" x="70" y="420">the crop follows the player down the court</text>
 
-  <text class="io" x="596" y="278">A SONG</text>
-  <rect class="bx" x="596" y="290" width="340" height="62"/>
-  <text class="ttl" x="616" y="318">Beat grid</text>
-  <text class="sub2" x="616" y="338">tempo, beat positions and the drop</text>
+  <text class="io" x="500" y="278">A SONG</text>
+  <rect class="bx" x="500" y="290" width="276" height="62"/>
+  <text class="ttl" x="520" y="318">Beat grid</text>
+  <text class="sub2" x="520" y="338">tempo, beat positions and the drop</text>
 
-  <rect class="bx" x="596" y="126" width="340" height="120"/>
-  <text class="ttl" x="616" y="154">What a person judged</text>
-  <text class="sub2" x="616" y="176">every clip that has ever shipped, watched</text>
-  <text class="sub2" x="616" y="194">frame by frame and written down —</text>
-  <text class="sub2" x="616" y="212">tied to the moment in the source video,</text>
-  <text class="sub2" x="616" y="230">so the judgement outlives the edit</text>
-
-  <rect class="bx" x="596" y="372" width="340" height="62" style="stroke:var(--good)"/>
-  <text class="ok" x="616" y="400">The final check</text>
-  <text class="sub2" x="616" y="420">separate from the software that made it</text>
-
+  <path class="fl" marker-end="url(#a2)" d="M234 34 V38"/>
   <path class="fl" marker-end="url(#a2)" d="M234 106 V120"/>
   <path class="fl" marker-end="url(#a2)" d="M234 188 V202"/>
   <path class="fl" marker-end="url(#a2)" d="M234 270 V284"/>
   <path class="fl" marker-end="url(#a2)" d="M234 352 V366"/>
-  <path class="fl" marker-end="url(#a2)" d="M234 34 V38"/>
-  <path class="fl" marker-end="url(#a2)" d="M596 321 H 450"/>
-  <path class="fl" style="stroke:var(--accent);color:var(--accent)" marker-end="url(#a2)" d="M596 186 H 500 V 239 H 450"/>
-  <path class="fl" marker-end="url(#a2)" d="M444 403 H 590"/>
+  <path class="fl" marker-end="url(#a2)" d="M500 321 H 450"/>
 </svg></div>
 
-  <h2>1 · It watches the whole thing</h2>
-  <p>Before choosing anything, it goes through the entire half-hour: where the crowd gets
-  loud, where the picture moves, and — importantly — every point where the broadcast cuts
-  to a different camera. Those cut points matter later, because a clip that crosses one
-  looks broken.</p>
+  <p>The song does more work than you might expect. The software measures the tempo and
+  where the beats fall, makes every clip a whole number of beats long so cuts land on the
+  beat rather than near it, then works backwards from the drop — picking which play belongs
+  there and setting its start time so the basket arrives exactly on it.</p>
 
-  <h2>2 · It finds the plays</h2>
-  <p>It tracks the players and the ball, and works out the shape of each play: someone
-  gathers, someone rises, the ball leaves their hands, and something happens at the rim. It
-  also works out <em>who</em> — reading the number on the jersey, so a reel about one player
-  is actually about that player.</p>
+  <p>About 40,000 lines of Python, running offline on one machine. Nothing is guessed:
+  the same video and the same song always produce the same edit, frame for frame.</p>
 
-  <h2>3 · It picks the best ones, and avoids repeating itself</h2>
-  <p>Every candidate play gets scored. Two rules then do most of the work: don't use the
-  same play twice from two different camera angles, and don't use a clip that crosses a
-  camera cut. A play with a problem isn't thrown away — it drops to the back of the queue,
-  and only appears if nothing better will fit.</p>
-
-  <h2>4 · It cuts to the music</h2>
-  <p>This is the part that makes it feel edited rather than assembled. It measures the
-  song's tempo and beat positions, then makes every clip a whole number of beats long, so
-  cuts land on the beat instead of near it.</p>
-  <p>It also works backwards from the song. It finds the drop, decides which play should
-  land there, and then sets that clip's start time so the basket arrives on the beat you
-  are waiting for.</p>
-
-  <h2>5 · It reframes for a phone, and checks the result</h2>
-  <p>Each clip is re-cropped to a vertical shape with the camera following the player —
-  the green box in <a href="#" data-goto="tracking">What it sees</a> — then everything is
-  assembled and mixed against the track.</p>
-  <p>Finally a separate checker looks at the finished video and asks, scene by scene:
-  is a real play happening here, is the right player on screen, can you actually see the
-  ball go in, does anything repeat, does the timing match the song. More on that in
-  <a href="#" data-goto="trust">Why it's reliable</a>.</p>
-
-  <h2>Built from</h2>
-  <p>About 40,000 lines of Python. Four vision models run locally on the machine — one that
-  finds people and the ball, one for rims, one that spots camera cuts, and one that reads
-  jersey numbers. Nothing is sent to a server, and there is no AI writing the edit: every
-  decision is ordinary code that can be read, re-run and checked.</p>
-</section>
-
-<!-- ────────────────────────────── WHY RELIABLE ─────────────────────────── -->
-<section id="s-trust" role="tabpanel" aria-labelledby="t-trust" hidden>
-  <p class="lede">The hard part of a system like this isn't making it produce a video. It's
-  knowing whether the video is any good — and knowing it without simply asking the software
-  to grade its own homework.</p>
-
-  <h2>A person watched every clip</h2>
-  <p>Every scene that has ever shipped in one of these reels has been watched frame by
-  frame and given a written verdict: what happens in it, whether the player stays in shot,
-  whether you can see the result. Those verdicts are stored — and this is the useful part —
-  <strong>tied to the moment in the source video</strong>, not to a particular edit.</p>
-  <p>So a judgement made once is permanent. If a later version reaches for the same piece of
-  footage, it already knows what a person thought of it, and it will avoid a clip that was
-  judged bad without anyone having to remember why.</p>
-
-  <h2>The checker is not the maker</h2>
-  <p>The final check deliberately doesn't get to see the software's own reasoning. It isn't
-  allowed to accept "the code thought this was a made basket" as evidence that it was — it
-  works from those human verdicts and from fresh measurements of the finished video.</p>
-  <p>And it fails safe: a scene nobody has looked at doesn't pass, it comes back as
-  <em>unknown</em>, which means someone has to look. A reel is finished only when there is
-  nothing unknown left in it.</p>
-
-  <h2>Nothing is random</h2>
-  <p>The same video and the same song always produce exactly the same edit. That sounds
-  small; it is what makes improvement possible. Any change can be tested by re-rendering
-  the reels and comparing them frame for frame — if a reel that was already good comes back
-  different, that is a signal, not a coincidence.</p>
-
-  <h2>Every rule had to earn its place</h2>
-  <p>Constants in this system aren't chosen by feel. Each one was tested against footage and
-  against a person's judgement, and the ones that didn't hold up were removed rather than
-  tuned. The rules that survived share a shape: they measure against something in the
-  picture — a player, a rim — rather than against the edge of the screen, which is why they
-  still work on footage from a completely different era.</p>
-
-  <h2>Where it's going</h2>
-  <div class="card">
-    <p style="margin:0">More players, and more source videos. The pipeline is general — the
-    six reels here use six different songs, six different players and footage spanning three
-    decades, and none of them required code written for that particular video.</p>
-  </div>
+  <p style="color:var(--dim);font-size:14.5px">If you want the technical detail, it is in
+  <a href="ARCHITECTURE.md">ARCHITECTURE.md</a> and <a href="METHOD.md">METHOD.md</a>.</p>
 </section>
 
 </main>
@@ -385,7 +212,6 @@ footer{border-top:1px solid var(--line);padding:26px 0 60px;color:var(--dim);fon
 </footer>
 
 <script>
-/* ---- tabs ------------------------------------------------------------- */
 const tabs = [...document.querySelectorAll('.tabs button')];
 function show(id){
   tabs.forEach(b=>{
@@ -405,7 +231,6 @@ document.addEventListener('click',e=>{
 const start = (location.hash||'').slice(1);
 if(start && document.getElementById('t-'+start)) show(start);
 
-/* ---- reels ------------------------------------------------------------ */
 const REELS = [
   {k:'ja', who:'Ja Morant', note:'10 plays · 34 seconds'},
   {k:'edwards', who:'Anthony Edwards', note:'9 plays · 27 seconds'},
@@ -419,7 +244,7 @@ document.getElementById('reelgrid').innerHTML = REELS.map(r=>`
     <video controls playsinline preload="metadata" poster="assets/poster-${r.k}.jpg">
       <source src="reels/${r.k}.mp4" type="video/mp4">
     </video>
-    <div class="meta"><h4>${r.who}</h4><p>${r.note}</p></div>
+    <h4>${r.who}</h4><p>${r.note}</p>
   </div>`).join('');
 </script>
 </body>

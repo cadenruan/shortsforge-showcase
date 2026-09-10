@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ShortsForge — highlight reels, edited by software</title>
-<meta name="description" content="Software that watches a half-hour basketball highlight video and edits it down to a half-minute vertical clip — choosing the plays, framing the players, and cutting it in time with the music.">
+<title>CourtVision — Automated Basketball Highlight Editor</title>
+<meta name="description" content="An automated basketball highlight editor. It watches a half-hour highlight video and edits it down to a half-minute vertical clip — picking the plays, following the players, and cutting it in time with the music.">
 <style>
 :root{
   --bg:#fbfbfa; --panel:#ffffff; --ink:#1a1a19; --dim:#5f6360; --line:#e3e2de;
@@ -29,6 +29,8 @@ a{color:var(--accent)}
 header{padding:60px 0 22px}
 h1{font-size:clamp(31px,5.4vw,44px);line-height:1.08;margin:0 0 14px;letter-spacing:-.022em}
 header p{font-size:clamp(16.5px,2.2vw,18.5px);color:var(--dim);max-width:60ch;margin:0}
+.kicker{font-size:15px!important;letter-spacing:.03em;text-transform:uppercase;
+  color:var(--accent)!important;font-weight:600;margin:-6px 0 14px!important}
 
 nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);
     backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin-top:24px}
@@ -68,70 +70,33 @@ footer{border-top:1px solid var(--line);padding:24px 0 56px;color:var(--dim);fon
 <body>
 
 <header class="wrap">
-  <h1>ShortsForge</h1>
-  <p>Software that watches a half-hour basketball highlight video and edits it down to a
-  half-minute vertical clip — picking the plays, following the players, and cutting it in
-  time with the music.</p>
+  <h1>CourtVision</h1>
+  <p class="kicker">Automated Basketball Highlight Editor</p>
+  <p>It watches a half-hour basketball highlight video and edits it down to a half-minute
+  vertical clip — picking the plays, following the players, and cutting it in time with the
+  music.</p>
 </header>
 
 <nav><div class="wrap"><div class="tabs" role="tablist">
-  <button role="tab" id="t-what"     aria-selected="true"  aria-controls="s-what">What it is</button>
-  <button role="tab" id="t-reels"    aria-selected="false" aria-controls="s-reels">The reels</button>
-  <button role="tab" id="t-sees"     aria-selected="false" aria-controls="s-sees">What it sees</button>
-  <button role="tab" id="t-how"      aria-selected="false" aria-controls="s-how">How it works</button>
+  <button role="tab" id="t-reels" aria-selected="true"  aria-controls="s-reels">The reels</button>
+  <button role="tab" id="t-how"   aria-selected="false" aria-controls="s-how">How it works</button>
 </div></div></nav>
 
 <main class="wrap">
 
-<section id="s-what" role="tabpanel" aria-labelledby="t-what">
+<section id="s-reels" role="tabpanel" aria-labelledby="t-reels">
   <p>Editing a highlight reel by hand takes hours. You sit through the whole video, pick out
   the good plays, trim each one so the basket lands where you want it, re-crop every shot for
   a phone screen, then line the whole thing up with a song.</p>
 
-  <p>We built software that does all of it on its own. Give it a long highlight
-  compilation, a player and a song, and it hands back a finished vertical clip.</p>
+  <p>CourtVision does all of it on its own. Give it a long highlight compilation, a player
+  and a song, and it hands back a finished vertical clip.</p>
 
-  <p>The six reels here were made that way. Nobody touched them — every play, every cut,
-  every crop and every bit of timing was chosen by the software.</p>
+  <p>These six were made that way — six players, six songs, footage spanning three decades.
+  Nobody touched them. Every play, cut, crop and bit of timing was chosen by the software.
+  Sound on.</p>
 
-  <p><a href="#" data-goto="reels">Watch them &rarr;</a></p>
-</section>
-
-<section id="s-reels" role="tabpanel" aria-labelledby="t-reels" hidden>
-  <p>Six players, six songs, footage spanning three decades. Sound on.</p>
   <div class="reels" id="reelgrid"></div>
-</section>
-
-<section id="s-sees" role="tabpanel" aria-labelledby="t-sees" hidden>
-  <p>One of the reels, with the software's own view drawn on top.</p>
-
-  <div class="wide">
-    <video controls playsinline preload="metadata" poster="assets/tracking-poster.jpg">
-      <source src="reels/rose-tracking.mp4" type="video/mp4">
-    </video>
-  </div>
-
-  <ul class="key">
-    <li><i class="sw" style="background:#969696"></i> everyone on court</li>
-    <li><i class="sw" style="background:#ffdc00"></i> the player this clip is about</li>
-    <li><i class="sw" style="background:#ff0000"></i> …when he slips out of frame</li>
-    <li><i class="sw" style="background:#00eb00"></i> the phone-shaped crop it keeps</li>
-    <li><i class="sw" style="background:#ff8c00"></i> the ball</li>
-    <li><i class="sw" style="background:#00dcff"></i> the rim</li>
-  </ul>
-
-  <p>Four models do the looking, and all of them run on the laptop rather than a server.
-  One finds the people and the ball. One finds rims. One watches for the moment the
-  broadcast cuts to a different camera, so a clip never straddles two shots. One reads the
-  number on a jersey, which is how a reel about one player stays about that player.</p>
-
-  <p>The green box is the part that survives into the finished reel. It tracks the player
-  down the court, which is how a wide television shot becomes a vertical video without
-  losing him off the edge.</p>
-
-  <p>Watch the ball as it reaches the basket and you'll see it vanish — hidden in the
-  player's hands, blurred by the motion, right at the moment that decides whether the shot
-  counted. So the software is built never to read "I can't see it" as "it isn't there."</p>
 </section>
 
 <section id="s-how" role="tabpanel" aria-labelledby="t-how" hidden>
@@ -192,13 +157,45 @@ footer{border-top:1px solid var(--line);padding:24px 0 56px;color:var(--dim);fon
   <path class="fl" marker-end="url(#a2)" d="M500 321 H 450"/>
 </svg></div>
 
-  <p>The song does more work than you might expect. The software measures the tempo and
-  where the beats fall, makes every clip a whole number of beats long so cuts land on the
-  beat rather than near it, then works backwards from the drop — picking which play belongs
-  there and setting its start time so the basket arrives exactly on it.</p>
+  <p>The song does more work than you might expect. CourtVision measures the tempo and where
+  the beats fall, makes every clip a whole number of beats long so cuts land on the beat
+  rather than near it, then works backwards from the drop — picking which play belongs there
+  and setting its start time so the basket arrives exactly on it.</p>
 
-  <p>About 40,000 lines of Python, running offline on one machine. Nothing is guessed:
-  the same video and the same song always produce the same edit, frame for frame.</p>
+  <p>About 40,000 lines of Python, running offline on one machine. Nothing is guessed: the
+  same video and the same song always produce the same edit, frame for frame.</p>
+
+  <h2>What it sees while it works</h2>
+
+  <p>One of the reels, with the software's own view drawn on top.</p>
+
+  <div class="wide">
+    <video controls playsinline preload="metadata" poster="assets/tracking-poster.jpg">
+      <source src="reels/rose-tracking.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <ul class="key">
+    <li><i class="sw" style="background:#969696"></i> everyone on court</li>
+    <li><i class="sw" style="background:#ffdc00"></i> the player this clip is about</li>
+    <li><i class="sw" style="background:#ff0000"></i> …when he slips out of frame</li>
+    <li><i class="sw" style="background:#00eb00"></i> the phone-shaped crop it keeps</li>
+    <li><i class="sw" style="background:#ff8c00"></i> the ball</li>
+    <li><i class="sw" style="background:#00dcff"></i> the rim</li>
+  </ul>
+
+  <p>Four models do the looking, and all of them run on the laptop rather than a server. One
+  finds the people and the ball. One finds rims. One watches for the moment the broadcast
+  cuts to a different camera, so a clip never straddles two shots. One reads the number on a
+  jersey, which is how a reel about one player stays about that player.</p>
+
+  <p>The green box is the part that survives into the finished reel. It tracks the player
+  down the court, which is how a wide television shot becomes a vertical video without
+  losing him off the edge.</p>
+
+  <p>Watch the ball as it reaches the basket and you'll see it vanish — hidden in the
+  player's hands, blurred by the motion, right at the moment that decides whether the shot
+  counted. So the software is built never to read "I can't see it" as "it isn't there."</p>
 
   <p style="color:var(--dim);font-size:14.5px">If you want the technical detail, it is in
   <a href="ARCHITECTURE.md">ARCHITECTURE.md</a> and <a href="METHOD.md">METHOD.md</a>.</p>

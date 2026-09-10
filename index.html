@@ -41,7 +41,7 @@ nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,
 .tabs button:hover{color:var(--ink)}
 .tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
 
-main{padding:34px 0 90px}
+main.wrap{padding:52px 22px 90px}   /* .wrap is a class and beats a bare `main` */
 section[hidden]{display:none}
 h2{font-size:21px;letter-spacing:-.012em;margin:38px 0 10px}
 h2:first-child{margin-top:0}
@@ -100,7 +100,39 @@ footer{border-top:1px solid var(--line);padding:24px 0 56px;color:var(--dim);fon
 </section>
 
 <section id="s-how" role="tabpanel" aria-labelledby="t-how" hidden>
-  <p>Five stages, in order.</p>
+  <h2>What it sees</h2>
+
+  <p>One of the reels, with the software's own view drawn on top.</p>
+
+  <div class="wide">
+    <video controls playsinline preload="metadata" poster="assets/tracking-poster.jpg">
+      <source src="reels/rose-tracking.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <ul class="key">
+    <li><i class="sw" style="background:#969696"></i> everyone on court</li>
+    <li><i class="sw" style="background:#ffdc00"></i> the player this clip is about</li>
+    <li><i class="sw" style="background:#ff0000"></i> …when he slips out of frame</li>
+    <li><i class="sw" style="background:#00eb00"></i> the phone-shaped crop it keeps</li>
+    <li><i class="sw" style="background:#ff8c00"></i> the ball</li>
+    <li><i class="sw" style="background:#00dcff"></i> the rim</li>
+  </ul>
+
+  <p>Four models do the looking, and all of them run on the laptop rather than a server. One
+  finds the people and the ball. One finds rims. One watches for the moment the broadcast
+  cuts to a different camera, so a clip never straddles two shots. One reads the number on a
+  jersey, which is how a reel about one player stays about that player.</p>
+
+  <p>The green box is the part that survives into the finished reel. It tracks the player
+  down the court, which is how a wide television shot becomes a vertical video without
+  losing him off the edge.</p>
+
+  <p>Watch the ball as it reaches the basket and you'll see it vanish — hidden in the
+  player's hands, blurred by the motion, right at the moment that decides whether the shot
+  counted. So the software is built never to read "I can't see it" as "it isn't there."</p>
+
+  <h2>The five stages</h2>
 
   <div class="figure" id="diagram"><svg viewBox="0 0 800 470" role="img" aria-label="Five stages: watch the whole video, find the plays, pick the best ones, cut to the music, reframe for a phone." style="width:100%;height:auto;display:block">
   <defs>
@@ -164,38 +196,6 @@ footer{border-top:1px solid var(--line);padding:24px 0 56px;color:var(--dim);fon
 
   <p>About 40,000 lines of Python, running offline on one machine. Nothing is guessed: the
   same video and the same song always produce the same edit, frame for frame.</p>
-
-  <h2>What it sees while it works</h2>
-
-  <p>One of the reels, with the software's own view drawn on top.</p>
-
-  <div class="wide">
-    <video controls playsinline preload="metadata" poster="assets/tracking-poster.jpg">
-      <source src="reels/rose-tracking.mp4" type="video/mp4">
-    </video>
-  </div>
-
-  <ul class="key">
-    <li><i class="sw" style="background:#969696"></i> everyone on court</li>
-    <li><i class="sw" style="background:#ffdc00"></i> the player this clip is about</li>
-    <li><i class="sw" style="background:#ff0000"></i> …when he slips out of frame</li>
-    <li><i class="sw" style="background:#00eb00"></i> the phone-shaped crop it keeps</li>
-    <li><i class="sw" style="background:#ff8c00"></i> the ball</li>
-    <li><i class="sw" style="background:#00dcff"></i> the rim</li>
-  </ul>
-
-  <p>Four models do the looking, and all of them run on the laptop rather than a server. One
-  finds the people and the ball. One finds rims. One watches for the moment the broadcast
-  cuts to a different camera, so a clip never straddles two shots. One reads the number on a
-  jersey, which is how a reel about one player stays about that player.</p>
-
-  <p>The green box is the part that survives into the finished reel. It tracks the player
-  down the court, which is how a wide television shot becomes a vertical video without
-  losing him off the edge.</p>
-
-  <p>Watch the ball as it reaches the basket and you'll see it vanish — hidden in the
-  player's hands, blurred by the motion, right at the moment that decides whether the shot
-  counted. So the software is built never to read "I can't see it" as "it isn't there."</p>
 
   <p style="color:var(--dim);font-size:14.5px">If you want the technical detail, it is in
   <a href="ARCHITECTURE.md">ARCHITECTURE.md</a> and <a href="METHOD.md">METHOD.md</a>.</p>
